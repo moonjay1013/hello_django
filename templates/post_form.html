@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>post form</title>
+</head>
+<body>
+    <form action="/post_form/" method="post">
+        {% csrf_token %}  <!-- POST 必须要有的tag -->
+        <input type="text" name="q">
+        <input type="submit" value="提交">
+    </form>
+    <p>{{ rlt }}</p>  <!-- POST成功后显示 -->
+</body>
+</html>
