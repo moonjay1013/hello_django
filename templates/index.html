@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% load my_tags %}
+
+<h1>{{ replace_text }}</h1>
+<p>{{ replace_list }}</p>
+<ul>
+    <li>{{ replace_list.0 }}</li>
+    <li>{{ replace_list.1 }}</li>
+    <li>{{ replace_list.2 }}</li>
+</ul>
+<p>{{ replace_list | length }}</p>
+
+<p>Time: {{ time }} </p>
+<p> Date: {{ time | date:"Y-m-d" }} </p>
+
+{{ safe_str }}<br>
+{{ safe_str | safe }}
+
+<p>if-else (Whether pass or not?) </p>
+{% if if_else_num > 90 and if_else_num <= 100 %}
+<h3>Excellent!</h3>
+{% elif if_else_num > 60 and if_else_num <= 90 %}
+<h3>Good!</h3>
+{% else %}
+<h3>SO BAD!</h3>
+{% endif %}
+
+<p>for (use 'replace_list') </p>
+<ul>
+{% for li_txt in replace_list reversed %}
+    <li>{{ li_txt }}</li>
+    <p>forloop.counter: {{ forloop.counter }}</p>
+    <p>forloop.counter0: {{ forloop.counter0 }}</p>
+    <p>forloop.revcounter: {{ forloop.revcounter }}</p>
+    <p>forloop.revcounter0: {{ forloop.revcounter0 }}</p>
+    <p>forloop.first: {{ forloop.first }}</p>
+    <p>forloop.last: {{ forloop.last }}</p>
+    <hr>
+{% endfor %}
+</ul>
+
+<p> Custom filter : </p>
+{{ 11 | my_filter:22 }}
+
+<p> Custom tag : </p>
+{% my_simple_tag 11 22 33 %}
+
+<p>from django.utils.safestring import mark_safe: </p>
+{% my_html "zzz" "xxx" %}
+</body>
+</html>
